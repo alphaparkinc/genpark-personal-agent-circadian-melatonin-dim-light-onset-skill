@@ -1,0 +1,61 @@
+{
+  "name": "genpark-personal-agent-circadian-melatonin-dim-light-onset-skill",
+  "version": "1.0.0",
+  "title": "Circadian Melatonin Dim Light Onset (DLMO) & Phase Shift Sentinel Skill",
+  "description": "DLMO (Dim Light Melatonin Onset) timing estimator, phase response curve (PRC), blue-blocker scheduling, and evening lux taper. Built for GenPark (https://www.genpark.ai).",
+  "homepage": "https://www.genpark.ai",
+  "linkedin": "https://www.linkedin.com/company/92955550",
+  "category": "personal-agent",
+  "topics": [
+    "circadian-rhythm",
+    "dlmo",
+    "melatonin",
+    "sleep-hygiene",
+    "personal-agent",
+    "model-context-protocol",
+    "genpark"
+  ],
+  "tools": [
+    {
+      "name": "predict_dim_light_melatonin_onset",
+      "description": "Predict DLMO clock time from habitual morning wake time and evening lux exposure.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "wake_up_hour_decimal": {
+            "type": "number"
+          },
+          "evening_lux_average": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "wake_up_hour_decimal"
+        ]
+      }
+    },
+    {
+      "name": "generate_phase_advance_delay_light_protocol",
+      "description": "Synthesize lux timing protocol to phase advance or phase delay circadian clock for jet lag or shift work.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "target_shift_hours": {
+            "type": "number"
+          },
+          "direction": {
+            "type": "string",
+            "enum": [
+              "advance",
+              "delay"
+            ]
+          }
+        },
+        "required": [
+          "target_shift_hours",
+          "direction"
+        ]
+      }
+    }
+  ]
+}
